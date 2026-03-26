@@ -111,38 +111,17 @@
         /* Floating Labels Logic */
         .form-group input, 
         .form-group textarea,
-       /* Dropdown specific styling */
-.form-group select {
-    width: 100%;
-    padding: 15px 5px;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    color: white; /* Bahar ka text white rahega */
-    font-size: 1rem;
-    outline: none;
-    cursor: pointer;
-    appearance: none; /* Default arrow hatane ke liye */
-}
-
-/* Jab dropdown khulega toh options ka style */
-.form-group select option {
-    background-color: #1a1a1a; /* Dark background options ke liye */
-    color: white; /* Text color white taki dikhayi de */
-    padding: 10px;
-}
-
-/* Custom Arrow icon for dropdown */
-.form-group::after {
-    content: '\f107'; /* FontAwesome Chevron Down icon */
-    font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
-    position: absolute;
-    right: 10px;
-    top: 20px;
-    color: var(--gold);
-    pointer-events: none;
-}
+        .form-group select {
+            width: 100%;
+            padding: 15px 5px;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.4s;
+        }
 
         .form-group label {
             position: absolute;
@@ -276,14 +255,14 @@
                         <label>Email Address</label>
                     </div>
 
-                   <div class="form-group">
-    <select id="subject" required>
-        <option value="" disabled selected hidden>Nature of Inquiry</option>
-        <option value="buy">Purchase Request</option>
-        <option value="sell">Sell Your Watch</option>
-        <option value="service">Maintenance & Service</option>
-    </select>
-    </div>
+                    <div class="form-group">
+                        <select id="subject" style="color: rgba(255,255,255,0.7);">
+                            <option value="" disabled selected>Nature of Inquiry</option>
+                            <option value="buy">Purchase Request</option>
+                            <option value="sell">Sell Your Watch</option>
+                            <option value="service">Maintenance & Service</option>
+                        </select>
+                    </div>
 
                     <div class="form-group">
                         <textarea id="message" rows="4" placeholder=" " required></textarea>
@@ -311,7 +290,7 @@
         // Form Submit Alert
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert(Our experts will contact you soon.');
+            alert('Bhai, message bhej diya gaya hai! Our experts will contact you soon.');
         });
     </script>
 </body>
