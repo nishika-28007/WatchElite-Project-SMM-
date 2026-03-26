@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | WatchElite Luxury</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #d4af37;
+            --dark-bg: #0a0a0a;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(212, 175, 55, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* --- Contact Section Styles --- */
+        .contact-section {
+            min-height: 100vh;
+            padding: 100px 10%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at top right, #1a1a1a, #0a0a0a);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* --- Left Side: Info --- */
+        .contact-info h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .gold-text { color: var(--gold); }
+
+        .tagline {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .info-box {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            color: var(--gold);
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .info-box:hover .info-icon {
+            background: var(--gold);
+            color: black;
+            transform: translateY(-5px);
+        }
+
+        .info-text h4 { font-size: 0.9rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; }
+        .info-text p { font-size: 1.1rem; margin-top: 5px; }
+
+        /* --- Right Side: Form --- */
+        .contact-form-container {
+            background: var(--glass);
+            padding: 50px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 35px;
+        }
+
+        /* Floating Labels Logic */
+        .form-group input, 
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px 5px;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.4s;
+        }
+
+        .form-group label {
+            position: absolute;
+            left: 5px;
+            top: 15px;
+            color: rgba(255,255,255,0.5);
+            transition: 0.4s;
+            pointer-events: none;
+        }
+
+        .form-group input:focus ~ label,
+        .form-group input:not(:placeholder-shown) ~ label,
+        .form-group textarea:focus ~ label,
+        .form-group textarea:not(:placeholder-shown) ~ label {
+            top: -15px;
+            font-size: 0.8rem;
+            color: var(--gold);
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            border-bottom: 1px solid var(--gold);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--gold);
+            color: black;
+            border: none;
+            padding: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.4s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            background: white;
+            letter-spacing: 4px;
+            transform: scale(1.02);
+        }
+
+        /* --- Social Links --- */
+        .social-container {
+            margin-top: 40px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-link:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .contact-wrapper { grid-template-columns: 1fr; }
+            .contact-info h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="contact-section">
+        <div class="contact-wrapper">
+            
+            <div class="contact-info" data-aos="fade-right">
+                <h1>Let's Talk <br><span class="gold-text">Excellence.</span></h1>
+                <p class="tagline">Whether you're looking to acquire a rare timepiece or need an expert evaluation, our concierge is ready to assist.</p>
+                
+                <div class="info-box">
+                    <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="info-text">
+                        <h4>Headquarters</h4>
+                        <p>Luxury Wing, Dubai Marina, UAE</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div class="info-text">
+                        <h4>24/7 Concierge</h4>
+                        <p>+971 50 888 1234</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="info-text">
+                        <h4>Private Inquiry</h4>
+                        <p>concierge@watchelite.com</p>
+                    </div>
+                </div>
+
+                <div class="social-container">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-form-container" data-aos="fade-left">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder=" " required>
+                        <label>Your Full Name</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder=" " required>
+                        <label>Email Address</label>
+                    </div>
+
+                    <div class="form-group">
+                        <select id="subject" style="color: rgba(255,255,255,0.7);">
+                            <option value="" disabled selected>Nature of Inquiry</option>
+                            <option value="buy">Purchase Request</option>
+                            <option value="sell">Sell Your Watch</option>
+                            <option value="service">Maintenance & Service</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea id="message" rows="4" placeholder=" " required></textarea>
+                        <label>Message / Watch Reference No.</label>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Form Submit Alert
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Bhai, message bhej diya gaya hai! Our experts will contact you soon.');
+        });
+    </script>
+</body>
+</html>
