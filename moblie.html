@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Marketing</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+color:#fff;
+background:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.9)),
+url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9');
+background-size:cover;
+background-attachment:fixed;
+}
+
+/* HEADER */
+header{
+position:sticky;
+top:0;
+padding:16px;
+text-align:center;
+font-size:22px;
+font-weight:600;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(8px);
+letter-spacing:1px;
+}
+
+/* SECTION */
+.section{
+padding:70px 8%;
+animation:fadeIn 1s ease;
+}
+
+/* TITLE */
+h1{
+font-size:32px;
+text-align:center;
+margin-bottom:15px;
+}
+
+.intro{
+font-size:16px;
+line-height:1.8;
+color:#ddd;
+max-width:900px;
+margin:0 auto 35px auto;
+text-align:center;
+}
+
+/* TYPES TITLE */
+.types-title{
+text-align:center;
+font-size:24px;
+margin-bottom:15px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+  margin-top:50px;
+}
+
+/* CARD */
+.card{
+  background:rgba(255,255,255,0.08);
+  padding:30px;
+  border-radius:18px;
+  cursor:pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  text-align:left;
+  position:relative;
+  overflow:hidden;
+}
+
+/* HOVER ANIMATION */
+.card:hover{
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+}
+
+/* CARD TITLE */
+.card h3{
+  font-size:22px;
+  margin-bottom:12px;
+  font-weight:700;
+}
+
+/* CARD TEXT */
+.card p{
+  font-size:16.5px;
+  color:#ddd;
+  line-height:1.8;
+}
+
+/* SMALL TAG */
+.tag{
+  font-size:12px;
+  color:#00ffd5;
+  margin-bottom:10px;
+  letter-spacing:1px;
+}
+
+
+
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:18px;
+margin-top:40px;
+font-size:13px;
+color:#aaa;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<header>📱 Mobile Marketing</header>
+
+<section class="section">
+
+<h1>Mobile Marketing — How Brands Reach You Without You Noticing</h1>
+
+<p class="intro">
+Think about this… 🤔  
+You search for a product once — maybe shoes, a watch, or a phone.  
+After that, suddenly the same product starts appearing everywhere — Instagram, games, YouTube, even Google.
+
+That’s not coincidence. That’s <b>Mobile Marketing</b>.
+
+Mobile marketing is a smart strategy where businesses connect with users directly through their smartphones — 
+based on what they like, what they search, and where they are.
+
+👉 Example: You search for “running shoes” → later while scrolling Instagram, you see a sponsored post showing those exact shoes.  
+👉 This happens because systems track user behavior and show highly relevant content at the right moment.
+
+In simple words, mobile marketing is not just advertising —  
+it is <b>understanding user behavior and turning attention into action.</b>
+</p>
+
+<h2 class="types-title">Types of Mobile Marketing Strategies</h2>
+
+<p class="intro">
+Different strategies are used depending on where the user is active.  
+Each method has its own way of attracting attention and driving action — let’s understand them with real-life situations.
+</p>
+
+
+<div class="grid">
+
+<!-- APP -->
+<div class="card" onclick="location.href='app.html'">
+<h3>📲 App-Based Marketing</h3>
+<p>
+<b>Definition:</b>  
+App-based marketing is a strategy where advertisements are shown inside mobile applications.  
+These ads are designed in such a way that they blend with normal app content, so users interact with them naturally.
+
+<br><br>
+
+<b>Example:</b>  
+While scrolling Instagram, you see a “Sponsored” post that looks like a normal reel or post.  
+You click it thinking it's interesting — and it takes you to a product page.
+</p>
+</div>
+
+<!-- GAME -->
+<div class="card" onclick="location.href='game.html'">
+<h3>🎮 In-Game Marketing</h3>
+<p>
+<b>Definition:</b>  
+In-game marketing refers to advertisements that appear inside mobile games.  
+These ads are often placed between levels or offered as rewards to keep users engaged.
+
+<br><br>
+
+<b>Example:</b>  
+While playing a game, you get a message: “Watch this ad to earn 100 coins.”  
+You watch the ad, get the reward, and the brand gets visibility.
+</p>
+</div>
+
+<!-- QR -->
+<div class="card" onclick="location.href='qr.html'">
+<h3>🔳 QR Code Marketing</h3>
+<p>
+<b>Definition:</b>  
+QR code marketing allows users to scan a code using their mobile device and instantly access a webpage or offer without typing any link.
+
+<br><br>
+
+<b>Example:</b>  
+You scan a QR code at a restaurant, and the menu or special offers open instantly on your phone.
+</p>
+</div>
+
+<!-- LOCATION -->
+<div class="card" onclick="location.href='location.html'">
+<h3>📍 Location-Based Marketing</h3>
+<p>
+<b>Definition:</b>  
+Location-based marketing uses a user’s real-time location (via GPS) to deliver relevant ads or notifications related to nearby businesses.
+
+<br><br>
+
+<b>Example:</b>  
+When you are near a shopping mall, you receive a notification saying “Flat 50% OFF at a store just 200 meters away.”
+</p>
+</div>
+
+<!-- SEARCH -->
+<div class="card" onclick="location.href='search.html'">
+<h3>🔎 Mobile Search Ads</h3>
+<p>
+<b>Definition:</b>  
+Mobile search ads are advertisements that appear on search engines when users search for specific keywords on their mobile devices.
+
+<br><br>
+
+<b>Example:</b>  
+You search “best smartphones under 20000” on Google, and the top results are sponsored ads from brands.
+</p>
+</div>
+
+<!-- MOBILE APP -->
+<div class="card" onclick="location.href='mobileapp.html'">
+<h3>📱 Mobile Apps</h3>
+<p>
+<b>Definition:</b>  
+Mobile apps are platforms that businesses use to directly communicate with users through notifications, updates, and offers.
+
+<br><br>
+
+<b>Example:</b>  
+A food delivery app sends a notification: “Hungry? Get 60% OFF on your next order.”
+</p>
+</div>
+
+</div>
+
+
+
+</section>
+
+<footer>
+© 2026 Mobile Marketing Project | Designed Professionally
+</footer>
+
+</body>
+</html>
+```

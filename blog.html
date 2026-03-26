@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WatchElite | The Art of Time ⌚✨</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #d4af37;
+            --bg: #050505;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg);
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        /* Navigation Bar - NEW */
+        .navbar {
+            position: fixed;
+            top: 20px; left: 50%; transform: translateX(-50%);
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 12px 30px;
+            z-index: 100;
+            display: flex;
+            gap: 25px;
+        }
+        .nav-link {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .nav-link:hover { color: var(--gold); transform: translateY(-2px); }
+
+        /* Luxury Header */
+        header {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.6), var(--bg)), 
+                        url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            color: var(--gold);
+            margin: 0;
+            letter-spacing: 15px;
+            text-transform: uppercase;
+            animation: glow 3s ease-in-out infinite alternate;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+        }
+
+        header p {
+            letter-spacing: 5px;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #ccc;
+        }
+
+        /* Blog Grid */
+        .container {
+            max-width: 1100px;
+            margin: -100px auto 100px;
+            padding: 20px;
+            display: grid;
+            gap: 40px;
+        }
+
+        .blog-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .blog-card:nth-child(even) { flex-direction: row-reverse; }
+
+        /* Date Badge - NEW */
+        .date-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--gold);
+            color: var(--bg);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(212,175,55,0.4);
+        }
+
+        .blog-img {
+            flex: 1;
+            min-height: 400px;
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(40%);
+            position: relative;
+        }
+
+        .blog-card:hover .blog-img { 
+            filter: grayscale(0%) brightness(1.1); 
+            transform: scale(1.05); 
+        }
+
+        .blog-info {
+            flex: 1;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .meta-tag {
+            color: var(--gold);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .blog-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin: 0 0 20px 0;
+            line-height: 1.2;
+        }
+
+        .blog-info p {
+            color: #999;
+            font-size: 1rem;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Read More Button - IMPROVED */
+        .read-more {
+            margin-top: 20px;
+            color: var(--gold);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Modal / Read Mode */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.98);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 60px 20px;
+        }
+
+        .modal-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: slideUp 0.6s ease;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 50px;
+        }
+
+        .modal-inner h1 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 3.5rem; }
+        .modal-inner .example-box { 
+            background: rgba(212,175,55,0.1); 
+            padding: 25px; 
+            border-left: 4px solid var(--gold);
+            margin: 30px 0;
+            font-style: italic;
+            border-radius: 10px;
+            position: relative;
+        }
+        .modal-inner .example-box::before {
+            content: '💎';
+            position: absolute;
+            top: -15px; left: 20px;
+            background: var(--bg);
+            padding: 5px 12px;
+            font-size: 1rem;
+            border-radius: 50%;
+        }
+
+        .close-btn {
+            position: fixed;
+            top: 30px; right: 40px;
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .close-btn:hover { color: var(--gold); transform: rotate(90deg); }
+
+        /* Animations */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(212,175,55,0.5); }
+            to { text-shadow: 0 0 40px rgba(212,175,55,0.8); }
+        }
+
+        @media (max-width: 768px) {
+            .blog-card { flex-direction: column !important; }
+            .blog-card:nth-child(even) { flex-direction: column; }
+            .blog-info { padding: 30px; }
+            .navbar { padding: 10px 20px; gap: 15px; flex-wrap: wrap; }
+        }
+		/* Social Share ka naya design */
+.share-container {
+    display: flex;
+    gap: 15px;
+    margin: 30px 0;
+    align-items: center;
+}
+.share-icon {
+    color: #fff;
+    width: 40px; height: 40px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: 0.3s;
+}
+.share-icon:hover {
+    background: var(--gold);
+    color: #000;
+}
+/* 1. Blog Card par hover karne par shadow badhegi */
+.blog-card:hover {
+    transform: translateY(-10px); /* Card thoda upar uthega */
+    box-shadow: 0 30px 60px rgba(212, 175, 55, 0.15); /* Gold shadow effect */
+    border-color: var(--gold); /* Border gold ho jayegi */
+}
+
+/* 2. Image Zoom Effect */
+.blog-img {
+    flex: 1;
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(30%) brightness(0.8); /* Default mein thodi dark aur classy */
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    overflow: hidden;
+}
+
+/* Hover karne par image khul kar dikhegi */
+.blog-card:hover .blog-img { 
+    filter: grayscale(0%) brightness(1.1); 
+    transform: scale(1.08); /* Halki si zoom hogi */
+}
+
+/* 3. Button Arrow Animation */
+.read-more i {
+    transition: transform 0.3s ease;
+}
+
+.blog-card:hover .read-more i {
+    transform: translateX(10px); /* Arrow aage move karega */
+}
+    </style>
+</head>
+<body>
+
+<!-- Navigation - NEW -->
+
+
+<header>
+    <h1>BLOG</h1>
+    <p style="letter-spacing: 5px;">⏰ TIMELESS PERSPECTIVE • MARCH 2026 ✨</p>
+</header>
+
+<div class="container" id="blog-grid">
+</div>
+
+<div id="readModal" class="modal">
+    <span class="close-btn" onclick="closePost()">&times;</span>
+    <div class="modal-inner" id="modal-content"></div>
+</div>
+
+<script>
+    const posts = [
+        {
+            title: "⌚ The Silent Language of Watches",
+            category: "HOROLOGY • PERSONALITY",
+            date: "15 Mar 2026",
+            img: "https://media.istockphoto.com/id/890289344/photo/the-perfect-outfit-means-a-perfect-day.jpg?s=612x612&w=0&k=20&c=wNFc6otEA7CmR5vsWc4Sn7Pu4KqNd8VJtYlNV-fVs6w=",
+            keywords: "luxury watches, personal style, horology, WatchElite, wristwear personality",
+            content: "A watch is much more than a device that tells time 💎; it is a silent messenger of your personality. The type of watch you wear speaks volumes without a word. From the polished steel of a classic automatic to the intricate movements of a skeleton watch, every detail communicates your taste, discipline, and sophistication ✨.",
+            example: "Entering a boardroom wearing a brushed steel WatchElite watch signals punctuality and precision ⏰. People notice subtle cues like weight, finish, and strap material—traits that reflect attention to detail.",
+            summary: "Luxury watches are statements that blend style, status, and personality into one wearable masterpiece 🏆. Owning a WatchElite is not just about telling time; it's about telling your story."
+        },
+        {
+            title: "💼 Watches as Your Signature Style",
+            category: "STYLE GUIDE • BRANDING",
+            date: "18 Mar 2026",
+            img: "https://imgmediagumlet.lbb.in/media/2023/10/6540ef867b6db1676c2f1778_1698754438244.jpg",
+            keywords: "men's watches, style guide, personal branding, fashion watches, WatchElite",
+            content: "Your watch is an extension of your personal brand 🎨. It's the final piece that complements your wardrobe and lifestyle. Leather straps, metal bracelets, chronographs, and minimalistic dials—every choice conveys confidence and character 💪.",
+            example: "Pairing a brown leather strap with formal attire communicates elegance and professionalism 👔, while a black dial with a sportier strap signals adventure and boldness 🔥.",
+            summary: "Choosing the right watch is not about trends but personality alignment ⚖️. WatchElite focuses on versatility—each piece transitions effortlessly from casual meetings to evening events."
+        },
+        {
+            title: "⚙️ Mechanical Heart vs Digital Soul",
+            category: "ENGINEERING • TRADITION",
+            date: "22 Mar 2026",
+            img: "https://img.chrono24.com/images/uhren/45415385-9twhqadp3lt02g0yzo4g2ahp-ExtraLarge.jpg",
+            keywords: "mechanical watches, smartwatch vs automatic, engineering watches, WatchElite, horology",
+            content: "Mechanical watches possess a soul that digital devices cannot replicate ❤️. Each gear, spring, and rotor performs a delicate symphony of precision, showing patience, craftsmanship, and engineering mastery 🎭.",
+            example: "Winding a WatchElite automatic watch every morning is more than routine; it's a ritual connecting you with centuries of horology tradition 🕰️. Unlike smartwatches, mechanical watches tell stories of heritage and personal investment.",
+            summary: "Mechanical watches blend timeless engineering with emotional value, making them far more than functional tools—they are heirlooms that reflect taste and character 👑."
+        },
+        {
+            title: "🌋 Adventure and the Explorer's Watch",
+            category: "ADVENTURE • RESILIENCE",
+            date: "25 Mar 2026",
+            img: "https://wanderlusters.com/wp-content/uploads/2020/07/4-Of-The-Best-Mens-Watches-For-Adventure-Travel-Wanderlusters-scaled.jpg",
+            keywords: "adventure watches, travel watches, rugged wristwear, WatchElite, outdoor watches",
+            content: "A watch can also communicate daring, resilience, and a spirit of adventure 🏔️. Rugged chronographs, water-resistant divers, and robust straps are for those who embrace challenges 🌊.",
+            example: "Hiking with a WatchElite chronograph demonstrates courage and preparedness 🥾, showing that your lifestyle is active and ambitious.",
+            summary: "Adventure watches are symbols of exploration and freedom ✈️, perfect for the modern traveler who values both functionality and personality."
+        },
+        {
+            title: "💎 Why Watches Are a Personal Legacy",
+            category: "LEGACY • HERITAGE",
+            date: "28 Mar 2026",
+            img: "data:image/jpeg;base64,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",
+            keywords: "luxury watches, heirloom watches, gift watches, personal legacy, WatchElite",
+            content: "Luxury watches are personal statements that transcend generations 📜. They become heirlooms, gifts, or reminders of achievements and milestones. Each watch carries history, emotion, and a sense of legacy 🏛️.",
+            example: "Gifting a WatchElite watch is more than presenting an accessory; it symbolizes trust, style, and timelessness 🎁. Receiving a well-crafted timepiece creates lasting memories.",
+            summary: "Owning a WatchElite watch is about building a legacy, blending personal style with history, craftsmanship, and storytelling 📖."
+        }
+    ];
+
+    const grid = document.getElementById('blog-grid');
+    posts.forEach((post, i) => {
+        grid.innerHTML += `
+            <div class="blog-card" onclick="openPost(${i})">
+                <div class="blog-img" style="background-image: url('${post.img}')">
+                    <div class="date-badge">📅 ${post.date}</div>
+                </div>
+                <div class="blog-info">
+                    <span class="meta-tag">${post.category}</span>
+                    <h2>${post.title}</h2>
+                    <p>${post.content}</p>
+                    <div class="read-more">
+                        <i class="fas fa-arrow-right"></i> EXPLORE MORE →
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    function openPost(i) {
+    // 1. Pehle data fetch karo (Post ki details)
+    const post = posts[i]; 
+    
+    // 2. Phir links banao
+    const postUrl = window.location.href; 
+    const postTitle = encodeURIComponent(post.title);
+
+    // 3. Phir HTML mein inject karo
+    document.getElementById('modal-content').innerHTML = `
+        <span class="meta-tag">${post.category}</span>
+        <p style="font-size:0.8rem; opacity:0.6;">📅 ${post.date} | Keywords: ${post.keywords}</p>
+        <h1>${post.title}</h1>
+        
+        <p style="font-size:1.4rem; line-height:1.8;">${post.content}</p>
+        
+        <div class="share-container">
+            <span style="font-size: 0.8rem; color: var(--gold); letter-spacing: 2px;">SHARE ARTICLE:</span>
+            <a href="https://www.instagram.com/" target="_blank" class="share-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://api.whatsapp.com/send?text=${postTitle}%20${postUrl}" target="_blank" class="share-icon"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=${postUrl}" target="_blank" class="share-icon"><i class="fab fa-facebook-f"></i></a>
+        </div>
+
+        <div class="example-box">
+            <strong>Real-World Scenario:</strong><br>${post.example}
+        </div>
+        
+        <p style="font-size:1.2rem; line-height:1.8;">${post.summary}</p>
+        
+        <hr style="border:0; border-top:1px solid #333; margin:50px 0;">
+        <p style="text-align:center; color:var(--gold);">Elite Perspective • Reference: Patek Philippe & Rolex Standards ✨</p>
+    `;
+
+    document.getElementById('readModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+    function closePost() {
+        document.getElementById('readModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+</script>
+
+</body>
+</html>

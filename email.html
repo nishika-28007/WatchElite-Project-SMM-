@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watch Email Marketing Pro</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+color:white;
+background:
+linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.85)),
+url('https://images.unsplash.com/photo-1524592094714-0f0654e20314');
+background-size:cover;
+background-attachment:fixed;
+}
+
+/* HEADER */
+header{
+position:fixed;
+width:100%;
+padding:18px 50px;
+background:rgba(0,0,0,0.6);
+display:flex;
+justify-content:space-between;
+z-index:999;
+}
+
+header h2{
+background:linear-gradient(45deg,#00eaff,#00ff88);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+nav a{
+margin-left:20px;
+cursor:pointer;
+}
+
+/* SECTION */
+.section{
+padding:90px 10%;
+}
+
+/* TEXT */
+h1{font-size:50px;text-align:center;}
+h2{margin-bottom:15px;color:#00ffcc;}
+p{font-size:18px;line-height:1.8;color:#ddd;}
+
+/* BACKEND */
+.steps{
+margin-top:20px;
+}
+.step{
+margin-bottom:20px;
+background:rgba(255,255,255,0.05);
+padding:15px;
+border-left:4px solid #00eaff;
+}
+
+/* LAYOUT */
+.flex{
+display:flex;
+gap:40px;
+margin-top:40px;
+flex-wrap:wrap;
+}
+
+/* LEFT */
+.left{
+flex:1;
+background:rgba(255,255,255,0.07);
+padding:25px;
+border-radius:15px;
+}
+
+/* RIGHT */
+.right{
+flex:1;
+background:white;
+color:black;
+border-radius:15px;
+overflow:hidden;
+}
+
+/* INPUT */
+input,select,textarea{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:6px;
+border:none;
+}
+
+/* BUTTON */
+button{
+padding:10px;
+background:linear-gradient(45deg,#00eaff,#00ff88);
+border:none;
+cursor:pointer;
+border-radius:6px;
+width:100%;
+}
+
+/* EMAIL PREVIEW */
+.mail-header{
+background:#f5f5f5;
+padding:10px;
+font-size:13px;
+font-color:black;
+}
+
+.mail-body{
+padding:20px;
+}
+
+.mail-body h3{
+color:#0088ff;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:20px;
+background:#000;
+margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>WatchElite</h2>
+<nav>
+<a href="newsletter.html" style="color: #d4af37; text-decoration: none; margin-left: 20px; font-weight: bold;">Newsletter</a>
+<a href="promotional.html" style="color: #d4af37; text-decoration: none; margin-left: 20px; font-weight: bold;">Promotional Email</a>
+<a href="transactional.html" style="color: #d4af37; text-decoration: none; margin-left: 20px; font-weight: bold;">Transactional Email</a>
+    </nav>
+</header>
+
+
+
+
+
+
+</header>
+
+<!-- SECTION -->
+<section class="section">
+
+<h1>Email Marketing</h1>
+
+<p style="text-align:center;max-width:900px;margin:20px auto;">
+Email marketing is a powerful way to directly connect with customers. 
+For luxury watches, brands send personalized emails about offers, new collections, 
+and reminders so users feel connected and confident before buying.
+</p>
+
+<!-- BACKEND -->
+
+<h2 style="text-align:center;margin-top:40px;">⚙ Backend Workflow (How Email Marketing Actually Works)</h2>
+
+<div class="steps">
+
+<div class="step">
+<b>1. Collecting Emails (Database)</b><br>
+When users visit a website, sign up, or show interest through social media ads,  
+their email addresses are stored in a database. This helps businesses connect with interested users.
+
+👉 Example: A user visits a watch page and enters their email → the system saves it for future communication.
+</div>
+
+<div class="step">
+<b>2. Email Service Provider (ESP)</b><br>
+Companies cannot send bulk emails directly through Gmail, so they use tools like Mailchimp or Brevo.  
+These platforms help design emails, manage contacts, and send emails professionally.
+
+👉 Example: Sending personalized emails to 1000 users at the same time.
+</div>
+
+<div class="step">
+<b>3. Automation & Trigger System</b><br>
+The system tracks user behavior like clicks, views, or cart activity.  
+Based on this behavior, it automatically decides which email to send (welcome, reminder, or offer).
+
+👉 Example: User views a watch → system sends a reminder email after some time.
+</div>
+
+<div class="step">
+<b>4. SMTP Server (Sending Process)</b><br>
+When you click "Send", the system uses SMTP (Simple Mail Transfer Protocol)  
+to deliver the email through the internet to the user’s email provider like Gmail or Outlook.
+
+👉 This is the actual backend process of sending emails.
+</div>
+
+<div class="step">
+<b>5. Delivery & Spam Filtering</b><br>
+The receiver’s email service checks whether the email is safe or spam.  
+If everything is valid, it appears in the Inbox or Promotions tab.
+
+👉 Example: Good design + trusted sender = Inbox delivery ✅
+</div>
+
+</div>
+
+<!-- FLEX -->
+<div class="flex">
+
+<!-- LEFT -->
+<div class="left">
+
+<h2>📧 Compose Email</h2>
+
+<label>From:</label>
+<input type="text" id="from" value="watchzone@gmail.com">
+
+<label>To:</label>
+<input type="text" id="to" placeholder="customer@gmail.com">
+
+<label>Subject:</label>
+<select id="subject">
+<option>⌚ Upgrade Your Style</option>
+<option>🔥 Limited Offer on Luxury Watches</option>
+<option>✨ New Watch Collection Launch</option>
+</select>
+
+<label>Email Type:</label>
+<select id="type" onchange="changeMessage()">
+<option value="welcome">Welcome</option>
+<option value="offer">Offer</option>
+<option value="reminder">Reminder</option>
+<option value="launch">Launch</option>
+</select>
+
+<label>Message:</label>
+<textarea id="message" rows="6"></textarea>
+
+<button onclick="sendMail()">Send Email</button>
+
+<p id="msg" style="color:#00ff88;margin-top:10px;"></p>
+
+</div>
+
+<!-- RIGHT -->
+<div class="right">
+
+<div style="background:#00eaff;padding:10px;font-weight:bold;">
+📩 WatchElite Mail
+</div>
+
+<div class="mail-header">
+<b>From:</b> <span id="pfrom"></span><br>
+<b>To:</b> <span id="pto"></span><br>
+<b>Subject:</b> <span id="psub"></span>
+</div>
+
+<div class="mail-body">
+<h3>Luxury Watch Collection</h3>
+
+<p id="pmsg"></p>
+
+<!-- FEATURES -->
+<div style="margin-top:10px;">
+✔ Premium Swiss Quality <br>
+✔ Elegant & Modern Design <br>
+✔ Limited Edition Collection
+</div>
+
+<!-- OFFER BOX -->
+<div style="margin-top:15px;padding:10px;background:#e6faff;border-radius:8px;text-align:center;">
+🎁 <b>Special Offer:</b> Get up to 20% OFF on selected watches
+</div>
+
+<!-- CTA -->
+<div style="margin-top:20px;text-align:center;">
+<a href="product.html" style="padding:10px 20px;background:#00eaff;color:black;text-decoration:none;border-radius:20px;">
+Explore Watches →
+</a>
+</div>
+
+<!-- EXTRA CONTENT -->
+<div style="margin-top:20px;font-size:14px;color:#444;">
+<b>Why Choose Us?</b><br>
+We provide premium quality watches with trusted warranty and fast delivery.  
+Thousands of customers trust our brand for style and reliability.
+</div>
+
+<!-- FOOTER -->
+<div style="margin-top:20px;font-size:12px;color:#777;text-align:center;">
+You are receiving this email because you showed interest in our products.<br>
+© WatchElite | All Rights Reserved
+</div>
+
+</div>
+
+</a>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 Watch Email Marketing Project
+</footer>
+
+<script>
+function changeMessage(){
+let type=document.getElementById("type").value;
+let msg="";
+
+if(type==="welcome"){
+msg="Welcome to WatchElite! ⌚✨ We are excited to have you explore our premium watch collection. Discover timeless designs, luxury craftsmanship, and exclusive styles that match your personality. आपका स्वागत है हमारे luxury world में 💎. Stay tuned for exciting updates and offers!";
+}
+
+if(type==="offer"){
+msg="🔥 Limited Time Offer! Upgrade your style with our luxury watches. Enjoy exclusive discounts and premium quality at the best price. अब देर मत करो ⏳ this deal won’t last long. Click below and grab your dream watch today!";
+}
+
+if(type==="reminder"){
+msg="⏳ Still thinking about your watch? You recently viewed one of our premium collections. Don’t miss out! आपका पसंदीदा watch अभी भी available है. Complete your purchase now before it’s gone!";
+}
+
+if(type==="launch"){
+msg="✨ New Launch Alert! Discover our latest luxury watch collection designed for elegance and style. Be the first to explore our new arrivals. नया collection आ चुका है 🚀 check it now and upgrade your lifestyle!";
+}
+
+document.getElementById("message").value=msg;
+}
+
+function sendMail(){
+let from=document.getElementById("from").value;
+let to=document.getElementById("to").value;
+let sub=document.getElementById("subject").value;
+let msg=document.getElementById("message").value;
+
+document.getElementById("pfrom").innerText=from;
+document.getElementById("pto").innerText=to;
+document.getElementById("psub").innerText=sub;
+document.getElementById("pmsg").innerText=msg;
+
+document.getElementById("msg").innerText="✅ Email Sent Successfully!";
+}
+
+changeMessage();
+</script>
+
+</body>
+</html>

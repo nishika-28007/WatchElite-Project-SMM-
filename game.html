@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing & Extreme Racing | WatchElite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600&family=Inter:wght@400;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #d4af37; --bg: #050505; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        body { 
+            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.95)), 
+                        url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071');
+            background-size: cover; background-attachment: fixed; color: #fff; overflow-x: hidden;
+        }
+
+        /* PREMIUM HEADER */
+        header { 
+            padding: 20px; text-align: center; font-family: 'Orbitron'; font-size: 24px; 
+            color: var(--gold); background: rgba(0,0,0,0.8); border-bottom: 2px solid var(--gold);
+            position: sticky; top: 0; z-index: 10000; box-shadow: 0 5px 20px rgba(212,175,55,0.2);
+        }
+
+        /* MAIN LAYOUT */
+        .container { 
+            padding: 40px 8%; 
+            display: flex; 
+            flex-direction: row; 
+            gap: 40px; 
+            align-items: flex-start; 
+            justify-content: center;
+        }
+
+        /* LEFT SIDE: CONTENT */
+        .content { flex: 1; min-width: 320px; }
+        .box { 
+            background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); padding: 30px; 
+            border-radius: 20px; border: 1px solid rgba(212,175,55,0.2); margin-bottom: 30px;
+            transition: 0.3s;
+        }
+        .box:hover { transform: translateY(-5px); border-color: var(--gold); }
+        h2 { font-family: 'Orbitron'; color: var(--gold); margin-bottom: 15px; font-size: 20px; }
+        p { line-height: 1.7; color: #ccc; font-size: 15px; margin-bottom: 10px; }
+
+        /* RIGHT SIDE: IPHONE GAME FRAME */
+        .game-side { flex: 0 0 380px; display: flex; justify-content: center; position: sticky; top: 100px; }
+        .iphone {
+            width: 360px; height: 760px; background: #000; border: 12px solid #1a1a1a; 
+            border-radius: 55px; position: relative; overflow: hidden; box-shadow: 0 0 80px rgba(212,175,55,0.3);
+            touch-action: none;
+        }
+        .notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 150px; height: 30px; background: #000; z-index: 10000; border-radius: 0 0 20px 20px; }
+
+        /* --- GAME INTERNAL UI --- */
+        .overlay { position: absolute; inset: 0; z-index: 5000; background: rgba(0,0,0,0.95); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .title { font-family: 'Orbitron'; color: var(--gold); font-size: 32px; letter-spacing: 2px; margin-bottom: 20px; text-shadow: 0 0 20px var(--gold); line-height: 1.2; }
+        
+        .btn-game { background: var(--gold); border: none; padding: 15px 40px; border-radius: 50px; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; color: #000; font-size: 14px; margin: 10px; text-decoration: none; transition: 0.2s; }
+        .btn-game:hover { transform: scale(1.05); background: #fff; }
+
+        /* AD SYSTEM */
+        #ad-screen { display: none; z-index: 9000; background: #000; }
+        .ad-video-frame { width: 100%; height: 100%; border: none; transform: scale(1.6); pointer-events: none; }
+        .ad-ui { position: absolute; top: 50px; width: 100%; padding: 20px; box-sizing: border-box; display: flex; justify-content: space-between; z-index: 9001; }
+        
+        .shop-now-ad {
+            position: absolute; bottom: 60px; z-index: 9002;
+            background: #fff; color: #000; padding: 18px 70px; font-weight: 900;
+            border-radius: 5px; text-decoration: none; font-family: 'Orbitron';
+            box-shadow: 0 0 30px var(--gold); animation: pulse 1s infinite;
+        }
+
+        /* HUD */
+        .hud { position: absolute; top: 60px; width: 100%; display: flex; justify-content: space-around; font-family: 'Orbitron'; color: var(--gold); z-index: 100; pointer-events: none; }
+        .stat-box { background: rgba(0,0,0,0.6); padding: 5px 15px; border-radius: 10px; border: 1px solid var(--gold); text-align: center; font-size: 12px; }
+
+        #game-msg { position: absolute; top: 150px; width: 100%; text-align: center; font-family: 'Orbitron'; font-size: 24px; color: #fff; opacity: 0; transition: 0.2s; z-index: 100; }
+
+        canvas { display: block; background: #111; width: 360px; height: 760px; }
+
+        footer { text-align: center; padding: 30px; background: rgba(0,0,0,0.8); font-size: 13px; color: #666; width: 100%; border-top: 1px solid #222; }
+
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+        /* Responsive */
+        @media (max-width: 1000px) {
+            .container { flex-direction: column; align-items: center; }
+            .game-side { position: static; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>⌚ WatchElite Marketing 🏎️</header>
+
+    <div class="container">
+        <div class="content">
+            <div class="box">
+                <h2>⚙️ How It Works</h2>
+                <p><b>1. Start Playing 🎮</b></p>
+                <p>The user opens the game and starts playing for fun. There is no ad at the beginning, so the user feels comfortable.</p>
+                <p><b>2. Get Fully Engaged 🎯</b></p>
+                <p>As the game continues, the user becomes more focused. They try to score more and collect coins.</p>
+                <p><b>3. Feel Happy After Scoring 🏆</b></p>
+                <p>When the user gets a high score or more coins, they feel happy and excited. This is the best moment to show something important.</p>
+                <p><b>4. Show Ad at the Right Time 🛒</b></p>
+                <p>Now the ad appears. It does not feel annoying because the user is already enjoying the game. So, the user is more likely to click and explore the products.</p>
+            </div>
+
+            <div class="box" style="border-left: 4px solid #d4af37;">
+                <h2>💎 Why Choose This?</h2>
+                <p><b>✔ No Annoying Ads</b><br>Users are not forced to watch ads again and again. Ads come at the right time.</p>
+                <p><b>✔ Fun + Marketing Together</b><br>Users enjoy playing and see the brand simultaneously. Fun, not boring.</p>
+                <p><b>✔ Easy to Remember</b><br>People forget normal ads, but they remember games. Brand stays in mind.</p>
+                <p><b>✔ Users Click by Choice</b><br>Here users are not forced. They click because they are interested.</p>
+                <p><b>👉 Simple Idea:</b><br>Make users enjoy first… then show the product ✨</p>
+            </div>
+        </div>
+
+        <div class="game-side">
+            <div class="iphone">
+                <div class="notch"></div>
+                <div id="game-over-screen" class="overlay" style="display:none; z-index: 6000;">
+        <div class="title" style="color: #ff4d4d;">GAME OVER</div>
+        <p id="final-score" style="margin-bottom:20px; font-family: 'Orbitron'; color: #fff;"></p>
+        <button class="btn-game" onclick="triggerAd()">RESTART RACE</button>
+    </div>
+                <div id="menu" class="overlay">
+				
+                    <div class="title">🏎️ VIRTUS<br>ELITE 🔥</div>
+                    <p style="color: #666; font-size: 10px; margin-bottom: 20px;">USE ARROW KEYS OR DRAG</p>
+                    <button class="btn-game" onclick="startGame()">START RACE</button>
+                    <button class="btn-game" style="background:white;" onclick="triggerAd()">FREE +500 💰</button>
+                </div>
+
+                <div id="ad-screen" class="overlay">
+                    <div class="ad-ui">
+                        <div style="background: var(--gold); color: #000; padding: 5px 10px; font-weight: 900; border-radius: 4px; font-size: 10px;">AD</div>
+                        <div id="skip-timer" style="color: white; font-size: 12px;">Wait...</div>
+                        <button id="skip-btn" style="display:none; background:var(--gold); border:none; padding:5px 15px; font-weight:bold; cursor:pointer;" onclick="closeAd()">SKIP ➔</button>
+                    </div>
+                    <iframe id="ad-frame" class="ad-video-frame" src="" allow="autoplay"></iframe>
+                    <a href="product.html" class="shop-now-ad">SHOP NOW</a>
+                </div>
+
+                <div id="game-msg">WELL DONE!</div>
+
+                <div class="hud">
+                    <div class="stat-box">SCORE<br><span id="score">0</span></div>
+                    <div class="stat-box">COINS<br><span id="coins">0</span></div>
+                </div>
+
+                <canvas id="gameCanvas" width="360" height="760"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <footer>© 2026 WatchElite | The Future of Premium Marketing</footer>
+
+<script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    let gameActive = false;
+    let score = 0;
+    let coins = 0;
+    let roadSpeed = 0;
+    let adTriggered500 = false;
+
+    let car = { x: 155, y: 580, w: 50, h: 95 };
+    let obstacles = [];
+    let coinPickups = [];
+
+    // PC CONTROLS
+    window.addEventListener('keydown', (e) => {
+        if(!gameActive) return;
+        if(e.key === "ArrowLeft" && car.x > 60) car.x -= 25;
+        if(e.key === "ArrowRight" && car.x < 250) car.x += 25;
+    });
+
+    // MOBILE CONTROLS
+    function handleMove(e) {
+        if(!gameActive) return;
+        let rect = canvas.getBoundingClientRect();
+        let clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        let newX = clientX - rect.left - car.w / 2;
+        if(newX > 55 && newX < 255) car.x = newX;
+    }
+    canvas.addEventListener('mousemove', handleMove);
+    canvas.addEventListener('touchmove', (e) => { e.preventDefault(); handleMove(e); }, {passive: false});
+
+    function startGame() {
+        document.getElementById('menu').style.display = 'none';
+        gameActive = true;
+        animate();
+    }
+	function gameOver() {
+    gameActive = false; // Game pause karo
+    document.getElementById('game-over-screen').style.display = 'flex'; // Restart screen dikhao
+    document.getElementById('final-score').innerText = "Score: " + score; // Score dikhao
+}
+
+    function showMsg(txt) {
+        const msg = document.getElementById('game-msg');
+        msg.innerText = txt;
+        msg.style.opacity = "1";
+        setTimeout(() => msg.style.opacity = "0", 800);
+    }
+	
+	
+
+   function triggerAd() {
+    gameActive = false;
+    const adScreen = document.getElementById('ad-screen');
+    adScreen.style.display = 'flex';
+    document.getElementById('ad-frame').src = "https://drive.google.com/file/d/1PoS8ohLhg_iEOUlVUQRbxzGq16iMN3C_/preview?autoplay=1";
+    
+    // Reset Skip Button
+    let timeLeft = 5;
+    document.getElementById('skip-btn').style.display = 'none';
+    document.getElementById('skip-timer').style.display = 'block';
+    document.getElementById('skip-timer').innerText = `Skip in ${timeLeft}s`;
+
+    let timer = setInterval(() => {
+        timeLeft--;
+        if(document.getElementById('skip-timer')) {
+            document.getElementById('skip-timer').innerText = `Skip in ${timeLeft}s`;
+        }
+        if(timeLeft <= 0) {
+            clearInterval(timer);
+            document.getElementById('skip-timer').style.display = 'none';
+            document.getElementById('skip-btn').style.display = 'block';
+        }
+    }, 1000);
+}
+
+   function closeAd() {
+    document.getElementById('ad-screen').style.display = 'none';
+    document.getElementById('game-over-screen').style.display = 'none'; // Ise hide karein
+    document.getElementById('ad-frame').src = "";
+    
+    // Reset score and items
+    obstacles = []; 
+    coinPickups = [];
+    car.x = 155; 
+    score = 0;
+    document.getElementById('score').innerText = score;
+    adTriggered500 = false; // Agli baar 50 score ke liye reset
+    
+    gameActive = true;
+    animate(); 
+}
+    function spawn() {
+        if(!gameActive) return;
+        let rx = Math.random() * 180 + 70;
+        if(Math.random() > 0.4) {
+            obstacles.push({ x: rx, y: -100, w: 50, h: 90, s: 10 });
+        } else {
+            coinPickups.push({ x: rx + 10, y: -100, r: 15, s: 8 });
+        }
+    }
+    setInterval(spawn, 1000);
+
+    function animate() {
+        if(!gameActive) return;
+        ctx.clearRect(0,0,360,760);
+
+        ctx.fillStyle = '#080808'; ctx.fillRect(0,0,360,760);
+        ctx.fillStyle = '#111'; ctx.fillRect(60, 0, 240, 760);
+        ctx.strokeStyle = '#d4af3722'; ctx.setLineDash([40, 40]);
+        ctx.lineDashOffset = -roadSpeed; ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.moveTo(180,0); ctx.lineTo(180,760); ctx.stroke();
+        roadSpeed += 18;
+
+        ctx.fillStyle = 'rgba(0,0,0,0.5)'; ctx.fillRect(car.x+8, car.y+8, car.w, car.h);
+        ctx.fillStyle = '#d4af37';
+        drawRoundedRect(ctx, car.x, car.y, car.w, car.h, 12); ctx.fill();
+        ctx.fillStyle = '#000'; ctx.fillRect(car.x+10, car.y+15, 30, 25);
+
+        obstacles.forEach((ob, i) => {
+            ob.y += ob.s;
+            ctx.fillStyle = '#444';
+            drawRoundedRect(ctx, ob.x, ob.y, ob.w, ob.h, 10); ctx.fill();
+          
+		  // animate function ke andar obstacles loop mein:
+      if(car.x < ob.x + ob.w && car.x + car.w > ob.x && car.y < ob.y + ob.h && car.y + car.h > ob.y) {
+    // Crash hua! Ad dikhao
+      gameOver(); 
+      return; // Turant function se bahar niklo taaki loop ruk jaye
+}
+            if(ob.y > 760) {
+                obstacles.splice(i,1);
+                score += 10;
+                document.getElementById('score').innerText = score;
+                if(score >= 50 && !adTriggered500) { adTriggered500 = true; triggerAd(); }
+            }
+        });
+
+        coinPickups.forEach((coin, i) => {
+            coin.y += coin.s;
+            ctx.fillStyle = '#d4af37';
+            ctx.beginPath(); ctx.arc(coin.x+15, coin.y+15, 15, 0, Math.PI*2); ctx.fill();
+            ctx.fillStyle = '#fff'; ctx.font = "bold 12px Arial"; ctx.fillText("$", coin.x+11, coin.y+20);
+            if(car.x < coin.x + 30 && car.x + car.w > coin.x && car.y < coin.y + 30 && car.y + car.h > coin.y) {
+                coinPickups.splice(i,1);
+                coins += 1;
+                document.getElementById('coins').innerText = coins;
+                showMsg("NICE! +50");
+            }
+        });
+        requestAnimationFrame(animate);
+    }
+
+    function drawRoundedRect(ctx, x, y, width, height, radius) {
+        ctx.beginPath(); ctx.moveTo(x + radius, y); ctx.lineTo(x + width - radius, y);
+        ctx.quadraticCurveTo(x + width, y, x + width, y + radius); ctx.lineTo(x + width, y + height - radius);
+        ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height); ctx.lineTo(x + radius, y + height);
+        ctx.quadraticCurveTo(x, y + height, x, y + height - radius); ctx.lineTo(x, y + radius);
+        ctx.quadraticCurveTo(x, y, x + radius, y); ctx.closePath();
+    }
+</script>
+</body>
+</html>

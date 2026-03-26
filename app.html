@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>App-Based Marketing | WatchElite</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+color:#fff;
+background:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.95)),
+url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9');
+background-size:cover;
+background-attachment:fixed;
+}
+
+/* 🔥 HEADER PREMIUM */
+header{
+position:sticky;
+top:0;
+padding:18px;
+text-align:center;
+font-size:24px;
+font-weight:700;
+letter-spacing:1px;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(15px);
+box-shadow:0 5px 20px rgba(0,0,0,0.6);
+animation:fadeDown 1s ease;
+}
+
+/* SECTION */
+.section{
+padding:70px 8%;
+animation:fadeUp 1.2s ease;
+}
+
+/* 💎 GLASS BOX ADVANCED */
+.box{
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(18px);
+padding:35px;
+border-radius:20px;
+margin-bottom:35px;
+line-height:1.9;
+border:1px solid rgba(255,255,255,0.1);
+transition:all 0.4s ease;
+position:relative;
+overflow:hidden;
+}
+
+/* glow effect */
+.box::before{
+content:'';
+position:absolute;
+width:200%;
+height:200%;
+background:linear-gradient(45deg,transparent,#d4af37,transparent);
+top:-50%;
+left:-50%;
+opacity:0;
+transition:0.6s;
+}
+
+.box:hover::before{
+opacity:0.1;
+transform:rotate(25deg);
+}
+
+.box:hover{
+transform:translateY(-10px) scale(1.01);
+box-shadow:0 25px 60px rgba(0,0,0,0.7);
+}
+
+/* FLEX */
+.flex{
+display:flex;
+gap:50px;
+align-items:flex-start;
+flex-wrap:wrap;
+}
+
+/* LEFT */
+.left{
+flex:1;
+min-width:300px;
+animation:slideLeft 1s ease;
+}
+
+/* RIGHT (unchanged layout) */
+.right{
+flex:1;
+min-width:320px;
+display:flex;
+justify-content:center;
+}
+
+/* ✨ HEADINGS */
+h2{
+margin-bottom:15px;
+font-weight:700;
+color:#ffd54f;
+text-shadow:0 2px 10px rgba(255,215,0,0.3);
+}
+
+/* TEXT ANIMATION */
+.box p{
+transition:0.3s;
+}
+
+.box p:hover{
+color:#ffe082;
+transform:translateX(5px);
+}
+
+/* 🚀 BENEFITS SPECIAL */
+.benefit p{
+padding:8px 12px;
+border-left:3px solid transparent;
+transition:0.3s;
+}
+
+.benefit p:hover{
+border-left:3px solid #d4af37;
+background:rgba(255,255,255,0.05);
+transform:translateX(10px);
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:20px;
+margin-top:40px;
+font-size:14px;
+color:#bbb;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+animation:fadeUp 1.5s ease;
+}
+
+/* 🔥 ANIMATIONS */
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes fadeDown{
+from{opacity:0;transform:translateY(-40px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes slideLeft{
+from{opacity:0;transform:translateX(-50px);}
+to{opacity:1;transform:translateX(0);}
+}
+
+/* 📱 REALISTIC IPHONE FRAME */
+.right{ flex:1; min-width:320px; display: flex; justify-content: center; }
+
+.iphone {
+    width: 350px; height: 650px; background: #000; border-radius: 45px; overflow: hidden;
+    border: 10px solid #1a1a1a; position: relative;
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.2), 0 30px 60px rgba(0,0,0,0.8);
+    outline: 2px solid #333;
+}
+
+/* Dynamic Island / Notch */
+.notch {
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 100px; height: 25px; background: #000; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; z-index: 10;
+}
+
+/* 🎥 VIDEO STYLING (Auto-fit & Zoom) */
+.story-video {
+    width: 100%; height: 100%; border: none;
+    transform: scale(1.4); /* Zooms in to hide Google UI */
+    position: absolute; top: 0; left: 0; z-index: 1;
+}
+
+/* INSTAGRAM OVERLAYS */
+.insta-top { position: absolute; top: 40px; left: 15px; z-index: 5; }
+.profile { display: flex; align-items: center; gap: 8px; color: #fff; font-size: 12px; font-weight: 600; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
+.profile img { width: 32px; height: 32px; border-radius: 50%; border: 2px solid #d4af37; }
+
+/* 🛒 SHOP NOW BUTTON */
+.story-cta { position: absolute; bottom: 35px; width: 100%; text-align: center; z-index: 5; }
+.story-cta a {
+    display: inline-block; background: #d4af37; color: #000; padding: 10px 45px;
+    border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 14px;
+    text-transform: uppercase; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    animation: bounce 2s infinite;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<header>📲 App-Based Marketing</header>
+
+<section class="section">
+
+<!-- DEFINITION -->
+<div class="box">
+<h2>📌 What is App-Based Marketing in WatchElite?</h2>
+
+<p>
+Let’s make it real… 👀  
+
+You open Instagram just for timepass… scrolling reels…  
+Suddenly you see a premium watch ⌚ — clean design, luxury vibe.  
+
+It doesn’t feel like an ad. It feels like content.  
+But when you click… it takes you directly to our WatchElite website.
+
+That moment right there — is <b>App-Based Marketing</b>.
+
+👉 In WatchElite, we use apps like Instagram to show our watches to people who are already interested in style, fashion, and luxury.
+
+👉 So instead of shouting “BUY NOW”,  
+we simply <b>appear at the right place… at the right time.</b>
+</p>
+</div>
+
+<!-- LEFT RIGHT -->
+<div class="flex">
+
+<!-- LEFT SIDE -->
+<div class="left box">
+
+<h2>⚙️ How It Works (Simple 5-Step Flow)</h2>
+
+<p><b>1. Interest Detection 🔍</b><br>
+When you search for watches or interact with fashion content, apps understand your interest. 
+It’s like the system quietly learning what you like.</p>
+
+<p><b>2. Smart Matching 🧠</b><br>
+Instagram matches your interest with our WatchElite ads. 
+So instead of random ads, you see something that actually fits your taste.</p>
+
+<p><b>3. Natural Appearance 📲</b><br>
+Our watch ad appears in your feed like a normal post. 
+No disturbance — just smooth blending with your content.</p>
+
+<p><b>4. Engagement Click 👆</b><br>
+You click because the design catches your attention, not because you were forced.</p>
+
+<p><b>5. Website Conversion 🌐</b><br>
+You land on WatchElite, explore watches, and may purchase. 
+That’s how simple scrolling turns into real action.</p>
+
+<p>👉 We don’t interrupt users… we <b>fit into their experience.</b></p>
+</div>
+
+<!-- RIGHT SIDE -->
+<div class="iphone">
+
+    <!-- TOP OVERLAY (Instagram style) -->
+    <div class="insta-top">
+        <div class="profile">
+            <img src="https://i.pravatar.cc/40" />
+            <span>WatchElite • Sponsored</span>
+        </div>
+    </div>
+
+    <!-- VIDEO -->
+   <iframe 
+    src="https://drive.google.com/file/d/1PoS8ohLhg_iEOUlVUQRbxzGq16iMN3C_/preview" 
+    class="story-video"
+    allow="autoplay">
+</iframe>
+
+    <!-- CTA BUTTON -->
+    <div class="story-cta">
+        <span class="arrow">︿</span>
+        <a href="product.html">Shop Now</a>
+    </div>
+
+</div>
+
+<!-- BENEFITS -->
+<div class="box benefit">
+
+<h2>🚀 Why WatchElite Uses App-Based Marketing</h2>
+
+<p>✔ We reach users where they spend most time — inside apps</p>
+
+<p>✔ Our watches don’t feel like ads — they feel like lifestyle content</p>
+
+<p>✔ Only interested people see our products (smart targeting)</p>
+
+<p>✔ Higher chances of clicks and engagement</p>
+
+<p>✔ Turns casual scrolling into real customers</p>
+
+<p>✔ Builds premium brand image</p>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 WatchElite | Designed with Smart Marketing Strategy
+</footer>
+
+</body>
+</html>

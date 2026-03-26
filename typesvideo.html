@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WatchElite | Video Marketing Strategy ⌚🎬</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #d4af37;
+            --bg: #050505;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+            --accent: #00ff88;
+        }
+
+        * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg);
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        header {
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.8), var(--bg)), 
+                        url('https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            color: var(--gold);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        /* --- ZIG-ZAG BLOG LAYOUT --- */
+        .blog-section {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 120px;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .blog-section:nth-child(even) { flex-direction: row-reverse; }
+
+        .blog-content { flex: 1; }
+
+        .blog-content .type-tag {
+            color: var(--gold);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .blog-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin: 0 0 20px;
+            color: #fff;
+        }
+
+        .blog-content p {
+            line-height: 1.8;
+            color: #aaa;
+            font-size: 1.05rem;
+        }
+
+        .concept-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .concept-card b { color: var(--gold); }
+
+        .example-highlight {
+            margin-top: 15px;
+            padding-left: 15px;
+            border-left: 2px solid var(--accent);
+            color: #00ff88;
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        /* --- VIDEO PLAYER STYLING --- */
+        .video-wrapper {
+            flex: 1;
+            height: 400px;
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid var(--border);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+            position: relative;
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 900px) {
+            .blog-section, .blog-section:nth-child(even) { flex-direction: column; text-align: center; }
+            .video-wrapper { width: 100%; height: 250px; }
+            .example-highlight { border-left: none; border-top: 2px solid var(--accent); padding-top: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Video Strategy</h1>
+    <p style="color: var(--gold); letter-spacing: 3px;">CONCEPTS • EXAMPLES • CONVERSIONS</p>
+</header>
+
+<div class="container">
+
+    <div class="blog-section">
+        <div class="blog-content">
+            <span class="type-tag">01. Creative Motion</span>
+            <h2>Animation Videos</h2>
+            <div class="concept-card">
+                <p><b>The Concept:</b> Animation breaks the limits of reality. It uses engaging imagery to explain **complex mechanical movements** that a camera cannot capture. It’s perfect for visualising the "Invisible" soul of a watch.</p>
+                <div class="example-highlight">
+                    <i class="fas fa-lightbulb"></i> Example: A 3D exploded view of a Rolex Calibre movement, showing how 200+ tiny parts work together for precision.
+                </div>
+            </div>
+        </div>
+        <div class="video-wrapper">
+
+<iframe src="https://drive.google.com/file/d/1UuHxAVZFEj8Wo1LMDnJnoIxuMIn3Mn_N/preview" allow="autoplay"></iframe>        </div>
+    </div>
+
+    <div class="blog-section">
+        <div class="blog-content">
+            <span class="type-tag">02. Visual Proof</span>
+            <h2>Demo & Unboxing</h2>
+            <div class="concept-card">
+                <p><b>The Concept:</b> These videos act as a "Digital Handshake." They show the product in action, focusing on **macro textures, sound, and finish**. For a watch collector, seeing the sweep of the hand is the ultimate proof of quality.</p>
+                <div class="example-highlight">
+                    <i class="fas fa-check-circle"></i> Example: An unboxing of a Patek Philippe, capturing the crisp sound of the box opening and the sunburst dial reflecting light.
+                </div>
+            </div>
+        </div>
+        <div class="video-wrapper">
+		<iframe src="https://drive.google.com/file/d/1A0K3oRY4LqNnmQf5hAVxRvI8WbgRPmzR/preview" allow="autoplay"></iframe>
+        </div>
+    </div>
+
+    <div class="blog-section">
+        <div class="blog-content">
+            <span class="type-tag">03. Legacy Building</span>
+            <h2>Brand Storytelling</h2>
+            <div class="concept-card">
+                <p><b>The Concept:</b> Brand videos don't sell a product; they sell an **Identity**. They build awareness about your company’s mission and heritage, making the buyer feel like they are joining an elite club.</p>
+                <div class="example-highlight">
+                    <i class="fas fa-crown"></i> Example: A cinematic film showing the 100-year history of your boutique and its commitment to horological excellence.
+                </div>
+            </div>
+        </div>
+        
+		<div class="video-wrapper">
+    <iframe src="https://drive.google.com/file/d/1q9-__R9TgwVR6sAjxrtICnHZG0tkl5Va/view?usp=drivesdk" allow="autoplay"></iframe>
+</div>
+    </div>
+
+    <div class="blog-section">
+        <div class="blog-content">
+            <span class="type-tag">04. The Solution</span>
+            <h2>Explanation Videos</h2>
+            <div class="concept-card">
+                <p><b>The Concept:</b> Simple and direct. These videos follow a formula: **Problem + Solution**. They explain why a customer needs your service—like why buying a pre-owned Rolex from you is safer than a private seller.</p>
+                <div class="example-highlight">
+                    <i class="fas fa-shield-alt"></i> Example: A video explaining your 50-point authenticity check that guarantees every watch sold is 100% genuine.
+                </div>
+            </div>
+        </div>
+        <div class="video-wrapper">
+            <iframe src="https://drive.google.com/file/d/1otz_zfwb_iHpSI0wys-_iC501lNLKXMz/view?usp=drivesdk" allowfullscreen></iframe>
+        </div>
+    </div>
+
+
+</div>
+
+<footer style="text-align: center; padding: 40px; border-top: 1px solid var(--border); color: #555;">
+    WatchElite Studio &copy; 2026 | Visual Excellence in Horology
+</footer>
+
+</body>
+</html>

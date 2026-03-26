@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Checkout | Luxury WatchZone</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: #0a0a0a; color: white; min-height: 100vh; display: flex; flex-direction: column; }
+
+        /* --- CENTERED HEADER --- */
+        header { 
+            padding: 30px; 
+            background: #111; 
+            text-align: center; 
+            border-bottom: 1px solid #333;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+        }
+        header h2 { 
+            background: linear-gradient(45deg,#00eaff,#00ff88); 
+            -webkit-background-clip:text; 
+            color:transparent; 
+            font-size: 28px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .container { 
+            max-width: 1100px; 
+            margin: 40px auto; 
+            width: 95%; 
+            display: grid; 
+            grid-template-columns: 1.6fr 1fr; 
+            gap: 40px; 
+            flex: 1; 
+        }
+
+        /* --- STEP CARDS --- */
+        .step-card { 
+            background: #151515; 
+            padding: 35px; 
+            border-radius: 24px; 
+            border: 1px solid #222; 
+            margin-bottom: 25px; 
+            display: none; 
+            animation: fadeIn 0.5s ease;
+        }
+        .step-card.active { display: block; }
+        
+        h3 { color: #00eaff; margin-bottom: 25px; font-size: 22px; border-left: 4px solid #00ff88; padding-left: 15px; }
+
+        /* PRODUCT REVIEW SECTION */
+        .prod-review { 
+            background: #1a1a1a; 
+            padding: 25px; 
+            border-radius: 18px;
+            border: 1px solid #333;
+        }
+        .prod-flex { display: flex; gap: 25px; align-items: center; margin-bottom: 20px; }
+        .prod-flex img { width: 140px; height: 140px; border-radius: 15px; object-fit: cover; border: 1px solid #444; }
+        .prod-info h4 { font-size: 22px; color: #fff; margin-bottom: 5px; }
+        .prod-info p { color: #00ff88; font-weight: 700; font-size: 20px; }
+
+        .highlights { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 15px; 
+            margin-top: 20px; 
+            padding-top: 20px; 
+            border-top: 1px solid #333;
+        }
+        .h-item { font-size: 13px; color: #aaa; display: flex; align-items: center; gap: 8px; }
+
+        .luxury-msg {
+            margin-top: 25px; padding: 15px; background: rgba(0, 234, 255, 0.05);
+            border-radius: 12px; border: 1px dashed #00eaff; font-style: italic;
+            font-size: 14px; color: #00eaff; text-align: center;
+        }
+
+        /* FORM STYLING */
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-size: 14px; color: #bbb; }
+        input { 
+            width: 100%; padding: 15px; border-radius: 10px; border: 2px solid #333; 
+            background: #111; color: white; font-size: 16px; outline: none; transition: 0.3s;
+        }
+        input:focus { border-color: #00eaff; background: #1a1a1a; }
+
+        /* PAYMENT OPTIONS */
+        .pay-opt { 
+            padding: 20px; border: 2px solid #333; border-radius: 15px; cursor: pointer; 
+            background: #1a1a1a; display: flex; align-items: center; gap: 15px; margin-bottom: 15px;
+        }
+        .pay-opt.selected { border-color: #00ff88; background: #00ff8811; }
+        .dot { width: 15px; height: 15px; border: 2px solid #555; border-radius: 50%; }
+        .selected .dot { background: #00ff88; border-color: #00ff88; box-shadow: 0 0 10px #00ff88; }
+
+        /* SUMMARY */
+        .summary { 
+            background: #111; padding: 30px; border-radius: 24px; border: 1px solid #333; 
+            height: fit-content; position: sticky; top: 40px;
+        }
+        .total-line { 
+            font-size: 24px; font-weight: bold; color: #00ff88; border-top: 1px solid #333; 
+            padding-top: 20px; margin-top: 20px; display: flex; justify-content: space-between;
+        }
+
+        /* BUTTONS */
+        .btn { 
+            width: 100%; padding: 18px; border: none; border-radius: 12px; 
+            font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 16px;
+        }
+        .btn-next { background: #00eaff; color: black; margin-top: 20px; }
+        .btn-pay { background: #00ff88; color: black; margin-top: 20px; }
+
+        footer { padding: 50px; text-align: center; background: #0d0d0d; color: #555; border-top: 1px solid #222; }
+
+        /* --- NEW LUXURY SUCCESS OVERLAY --- */
+        #success-overlay { 
+            position: fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.96); backdrop-filter: blur(8px);
+            display:none; justify-content:center; 
+            align-items:center; z-index:3000;
+        }
+        .success-card {
+            background:#151515; padding:50px; border-radius:30px; 
+            border:1px solid #00ff8855; max-width:450px; text-align:center;
+            box-shadow: 0 10px 40px rgba(0,255,136,0.1);
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes popIn { from { opacity:0; transform: scale(0.8); } to { opacity:1; transform: scale(1); } }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<header>
+    <h2>Luxury WatchZone</h2>
+    <p style="font-size: 12px; color: #666; letter-spacing: 1px; margin-top: 5px;">ESTABLISHED 2026 • AUTHORIZED DEALER</p>
+</header>
+
+<div class="container">
+    <div class="main-content">
+        
+        <div class="step-card active" id="step1">
+            <h3>1. Review Your Masterpiece</h3>
+            <div class="prod-review">
+                <div class="prod-flex">
+                    <img id="p-img" src="" alt="Selected Watch">
+                    <div class="prod-info">
+                        <h4 id="p-name">Loading...</h4>
+                        <p id="p-price-display">₹0</p>
+                        <span style="font-size: 12px; color: #666;">Unit: 01 | SKU: LWZ-2026</span>
+                    </div>
+                </div>
+                <div class="highlights">
+                    <div class="h-item">✔ 2-Year International Warranty</div>
+                    <div class="h-item">✔ Swiss Movement Certified</div>
+                    <div class="h-item">✔ Scratch-Resistant Sapphire</div>
+                    <div class="h-item">✔ Premium Wooden Gift Box</div>
+                </div>
+                <div class="luxury-msg">"A watch is not just for time, it's a legacy. You've made an excellent choice."</div>
+            </div>
+            <button class="btn btn-next" onclick="showStep(2)">Proceed to Delivery Details</button>
+        </div>
+
+        <div class="step-card" id="step2">
+            <h3>2. Delivery Destination</h3>
+            <div class="form-group"><label>Full Name</label><input type="text" id="custName" placeholder="Enter your name"></div>
+            <div class="form-group"><label>Phone Number</label><input type="text" id="custPhone" placeholder="+91 00000 00000"></div>
+            <div class="form-group"><label>Shipping Address</label><input type="text" id="custAddr" placeholder="Flat, Street, Landmark"></div>
+            <div style="display: flex; gap: 15px;">
+                <div class="form-group" style="flex: 1;"><label>City</label><input type="text" id="custCity" placeholder="Mumbai"></div>
+                <div class="form-group" style="flex: 1;"><label>PIN Code</label><input type="text" id="custPin" placeholder="400001"></div>
+            </div>
+            <button class="btn btn-next" onclick="validateShipping()">Select Payment Mode</button>
+            <p onclick="showStep(1)" style="text-align:center; color:#555; cursor:pointer; margin-top:15px; font-size:14px;">⬅ Back to Review</p>
+        </div>
+
+        <div class="step-card" id="step3">
+            <h3>3. Secure Checkout</h3>
+            <div class="pay-opt selected" id="opt-card" onclick="setPay('card')">
+                <div class="dot"></div>
+                <div><b>Credit / Debit Card</b> <br><small style="color:#666">Visa, Mastercard, RuPay</small></div>
+            </div>
+            <div class="pay-opt" id="opt-upi" onclick="setPay('upi')">
+                <div class="dot"></div>
+                <div><b>UPI Secure</b> <br><small style="color:#666">GPay, PhonePe, Paytm</small></div>
+            </div>
+
+            <div id="card-fields" style="background: #111; padding: 20px; border-radius: 15px; border: 1px solid #222;">
+                <div class="form-group"><label>Card Number</label><input type="text" id="card-no" placeholder="0000 0000 0000 0000"></div>
+                <div style="display: flex; gap: 15px;">
+                    <div class="form-group"><label>Expiry</label><input type="text" id="card-exp" placeholder="MM/YY"></div>
+                    <div class="form-group"><label>CVV</label><input type="password" id="card-cvv" placeholder="***"></div>
+                </div>
+            </div>
+
+            <div id="upi-fields" style="display:none; background: #111; padding: 20px; border-radius: 15px; border: 1px solid #222;">
+                <div class="form-group"><label>Enter UPI ID</label><input type="text" id="upi-id" placeholder="yourname@upi"></div>
+                <div class="form-group"><label>UPI PIN</label><input type="password" id="upi-pin" placeholder="Enter 4 or 6 digit PIN"></div>
+            </div>
+            <button class="btn btn-pay" id="finalPayBtn" onclick="processPayment()">Complete Secure Payment</button>
+        </div>
+    </div>
+
+    <div class="summary">
+        <h4 style="margin-bottom:20px; font-size: 20px;">In Your Cart</h4>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 12px; color: #888;">
+            <span>Subtotal</span><span id="sum-price">₹0</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 12px; color: #00ff88;">
+            <span>Delivery</span><span>Express FREE</span>
+        </div>
+        <div class="total-line"><span>Total</span><span id="sum-total">₹0</span></div>
+    </div>
+</div>
+
+<footer>
+    <p><b>LUXURY WATCHZONE INTERNATIONAL</b></p>
+    <p>&copy; 2026 Luxury WatchZone. All Rights Reserved.</p>
+</footer>
+
+<div id="success-overlay">
+    <div class="success-card">
+        <div class="success-icon">✔</div>
+        <h2 style="color:white; margin-bottom:10px;">Order Successful!</h2>
+<p style="color:#ccc; line-height: 1.6; margin-bottom:20px;">
+        Congratulations <b id="display-name" style="color:#00ff88"></b>, your horological masterpiece is secured. 
+        Our curators are now preparing your timepiece for its journey. 📦
+    </p>
+		<div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; margin-bottom: 25px;">
+        <p style="font-size: 13px; color: #00eaff; margin-bottom: 5px;">📍 Status: Quality Inspection</p>
+        <p style="font-size: 13px; color: #aaa;">🚚 Dispatch: Within 24 Hours</p>
+    </div>
+        <div class="order-id-badge">AUTHENTICATION ID: #LWZ-2026-CONFIRMED</div>
+        <button class="btn btn-next" style="background:#00ff88; margin-top:30px;" onclick="window.location.href='product.html'">Continue Shopping</button>
+    </div>
+</div>
+<script>
+    let selectedMethod = 'card';
+
+    window.onload = function() {
+        const name = localStorage.getItem('selectedProductName');
+        const price = localStorage.getItem('selectedProductPrice');
+        const img = localStorage.getItem('selectedProductImg');
+        if(name) {
+            document.getElementById('p-name').innerText = name;
+            document.getElementById('p-img').src = img;
+            let formattedPrice = "₹" + parseInt(price).toLocaleString('en-IN');
+            document.getElementById('p-price-display').innerText = formattedPrice;
+            document.getElementById('sum-price').innerText = formattedPrice;
+            document.getElementById('sum-total').innerText = formattedPrice;
+        }
+    }
+
+    function showStep(step) {
+        document.querySelectorAll('.step-card').forEach(card => card.classList.remove('active'));
+        document.getElementById('step' + step).classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    function validateShipping() {
+        const name = document.getElementById('custName').value;
+        const phone = document.getElementById('custPhone').value;
+        const addr = document.getElementById('custAddr').value;
+        const city = document.getElementById('custCity').value;
+        const pin = document.getElementById('custPin').value;
+
+        if(!name || !phone || !addr || !city || !pin) {
+            alert("Bhai, shipping details toh bharo pehle!");
+            return;
+        }
+        showStep(3);
+    }
+
+    function setPay(method) {
+        selectedMethod = method;
+        document.getElementById('opt-card').classList.remove('selected');
+        document.getElementById('opt-upi').classList.remove('selected');
+        
+        if(method === 'card') {
+            document.getElementById('opt-card').classList.add('selected');
+            document.getElementById('card-fields').style.display = 'block';
+            document.getElementById('upi-fields').style.display = 'none';
+        } else {
+            document.getElementById('opt-upi').classList.add('selected');
+            document.getElementById('card-fields').style.display = 'none';
+            document.getElementById('upi-fields').style.display = 'block';
+        }
+    }
+
+    function processPayment() {
+        // VALIDATION LOGIC
+        if(selectedMethod === 'card') {
+            if(!document.getElementById('card-no').value || !document.getElementById('card-exp').value || !document.getElementById('card-cvv').value) {
+                alert("Please enter full card details!");
+                return;
+            }
+        } else {
+            if(!document.getElementById('upi-id').value || !document.getElementById('upi-pin').value) {
+                alert("Bhai, UPI ID aur PIN toh dalo!");
+                return;
+            }
+        }
+
+        const btn = document.getElementById('finalPayBtn');
+        btn.innerText = "Securing Transaction...";
+        btn.disabled = true;
+
+        setTimeout(() => {
+            document.getElementById('display-name').innerText = document.getElementById('custName').value || "Valued Customer";
+            document.getElementById('success-overlay').style.display = 'flex';
+        }, 2000);
+    }
+</script>
+
+</body>
+</html>

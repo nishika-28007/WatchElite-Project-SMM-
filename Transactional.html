@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transactional Email Marketing</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+color:white;
+background:
+linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.9)),
+url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlP_l5EPsL7RpjMN4thskEI72dgtb-GUcmFw&s');
+background-size:cover;
+background-attachment:fixed;
+}
+
+/* HEADER */
+header{
+position:fixed;
+width:100%;
+padding:15px 40px;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+z-index:999;
+}
+
+header h2{
+font-size:22px;
+letter-spacing:2px;
+background:linear-gradient(45deg,#00eaff,#00ff88);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+/* SECTION */
+.section{
+padding:100px 10%;
+text-align:center;
+}
+
+h1{font-size:46px;margin-bottom:10px;}
+h2{color:#00ffcc;margin:25px 0 10px;}
+
+p{
+color:#ddd;
+font-size:18px;
+line-height:1.9;
+max-width:900px;
+margin:8px auto;
+}
+
+/* BOX */
+.box{
+background:rgba(255,255,255,0.07);
+padding:22px;
+margin:15px auto;
+border-left:4px solid #00eaff;
+border-radius:10px;
+max-width:900px;
+transition:0.3s;
+}
+.box:hover{transform:translateX(6px);}
+
+/* SAMPLE CARD */
+.card{
+max-width:600px;
+margin:40px auto;
+background:#111;
+border-radius:20px;
+padding:30px;
+text-align:left;
+box-shadow:0 0 30px rgba(0,0,0,0.5);
+}
+
+.card h3{
+color:#00ffcc;
+margin-bottom:10px;
+}
+
+.card p{
+font-size:15px;
+margin:5px 0;
+color:#ccc;
+}
+
+.otp{
+background:#000;
+padding:15px;
+text-align:center;
+font-size:28px;
+letter-spacing:5px;
+color:#00ffcc;
+margin:15px 0;
+border-radius:10px;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:20px;
+background:#000;
+margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>WATCH ELITE</h2>
+</header>
+
+<section class="section">
+
+<h2>Transactional Email Marketing</h2>
+
+<p>
+Transactional email marketing is used to send important messages to users based on their actions.  
+These emails are not for promotion — they are sent to provide information, confirmation, or security updates instantly.
+</p>
+
+<p>
+👉 Example:  
+When you place an order, you receive an email like “Your Order is Confirmed”  
+Or when you login, you receive an OTP code for verification.
+</p>
+
+<h2>⚙ How It Works (Backend Flow)</h2>
+
+<div class="box">
+<b>1. User Action Starts Everything:</b><br>
+The moment a user clicks something important like “Login”, “Place Order”, or “Reset Password”, the system gets triggered.  
+👉 This is the starting point of every transactional email.
+</div>
+
+<div class="box">
+<b>2. System Understands & Prepares the Response:</b><br>
+The backend quickly checks what happened and collects all required details from the database.  
+👉 For example: user name, order ID, payment status, or generating an OTP.  
+👉 At the same time, it decides which type of email should be sent (OTP, confirmation, receipt, etc.).
+</div>
+
+<div class="box">
+<b>3. Email is Created Automatically:</b><br>
+A ready-made email template is used and filled with real-time user data.  
+👉 So instead of a generic message, the user gets something personal like:  
+“Hello Nishika, Your Order #45821 has been confirmed.”
+</div>
+
+<div class="box">
+<b>4. Instant Sending Through Email Service:</b><br>
+The system connects to an email service (like SMTP or API) and sends the email immediately.  
+👉 This whole process happens in seconds without any manual work.
+</div>
+
+<div class="box">
+<b>5. User Receives It & Trust is Built:</b><br>
+The user gets the email instantly, which confirms that their action was successful.  
+👉 This builds trust, improves experience, and makes the system feel reliable.
+</div>
+
+
+
+    <title>Order Confirmation</title>
+    <style>
+        body { margin: 0; padding: 0; background-color: #1a1a1a; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #ffffff; }
+        .container { max-width: 600px; margin: 20px auto; background-color: #232f3e; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+        .header { background-color: #131921; padding: 20px; text-align: center; border-bottom: 2px solid #37475a; }
+        .content { padding: 30px; background: linear-gradient(180deg, #232f3e 0%, #1a1a1a 100%); }
+        .status-badge { background-color: #008296; color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: bold; display: inline-block; margin-bottom: 15px; }
+        .order-title { font-size: 24px; font-weight: 400; margin: 0; color: #ffffff; }
+        .highlight { color: #ff9900; font-weight: bold; }
+        
+        /* Amazon Style Tracking Bar */
+        .tracking-container { margin: 30px 0; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 10px; }
+        .track-bar { height: 4px; background: #37475a; position: relative; margin: 15px 0; border-radius: 2px; }
+        .track-fill { position: absolute; height: 100%; width: 25%; background: #ff9900; box-shadow: 0 0 10px #ff9900; }
+        .track-dot { width: 12px; height: 12px; background: #ff9900; border-radius: 50%; position: absolute; top: -4px; left: 25%; }
+        
+        .product-card { display: flex; border-top: 1px solid #37475a; padding-top: 20px; margin-top: 20px; }
+        .product-img { width: 100px; height: 100px; background: #fff; border-radius: 8px; padding: 5px; }
+        .product-info { padding-left: 20px; flex-grow: 1; }
+        
+        .cta-button { display: block; background: #ff9900; color: #111 !important; text-align: center; padding: 15px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 30px; font-size: 16px; transition: 0.3s; }
+        .cta-button:hover { background: #e68a00; }
+        
+        .footer { padding: 20px; background-color: #131921; font-size: 12px; color: #848484; text-align: center; }
+        .price-table { width: 100%; margin-top: 20px; font-size: 14px; border-top: 1px solid #37475a; padding-top: 15px; }
+    </style>
+
+<body>
+
+   <div class="container" style="max-width: 600px; margin: 0 auto; background-color: #1a1a1a; font-family: 'Segoe UI', Roboto, sans-serif; border-radius: 8px; overflow: hidden; color: #ffffff;">
+    
+    <!-- Logo Section -->
+    <div class="header" style="background-color: #131921; padding: 25px; text-align: center; border-bottom: 2px solid #37475a;">
+        <img src="https://upload.wikimedia.org" width="100" style="filter: invert(1);">
+    </div>
+
+    <div class="content" style="padding: 40px 30px; background: linear-gradient(180deg, #232f3e 0%, #111111 100%);">
+        
+        <div class="status-badge" style="background-color: #008296; color: white; padding: 6px 18px; border-radius: 20px; font-size: 11px; font-weight: 800; display: inline-block; margin-bottom: 20px; letter-spacing: 1px;">ORDER CONFIRMED</div>
+        
+        <h1 class="order-title" style="font-size: 28px; font-weight: 300; margin: 0; color: #ffffff;">Thank you, <span class="highlight" style="color: #ff9900; font-weight: 700;">Nishikaaa!</span></h1>
+        <p style="color: #bbbbbb; line-height: 1.6; font-size: 15px; margin-top: 15px;">Your order has been successfully placed and is now being prepared for shipment. We will notify you with a tracking link as soon as your package leaves our warehouse.</p>
+
+        <!-- Delivery Estimate Box -->
+        <div style="background: rgba(255,153,0,0.1); border-left: 4px solid #ff9900; padding: 20px; margin: 30px 0; border-radius: 0 8px 8px 0;">
+            <span style="font-size: 13px; color: #ff9900; text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">Estimated Delivery:</span>
+            <div style="font-size: 20px; font-weight: 700; margin-top: 5px; color: #ffffff;">Friday, March 28th</div>
+        </div>
+
+        <!-- Visual Tracking Bar -->
+        <div class="tracking-container" style="margin-bottom: 40px;">
+            <div style="display: flex; justify-content: space-between; font-size: 10px; color: #848484; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">
+                <span style="color: #ff9900;">Ordered</span>
+                <span>Shipped</span>
+                <span>Out for Delivery</span>
+                <span>Arriving</span>
+            </div>
+            <div class="track-bar" style="height: 4px; background: #37475a; position: relative; margin: 15px 0; border-radius: 2px;">
+                <div class="track-fill" style="position: absolute; height: 100%; width: 25%; background: #ff9900; box-shadow: 0 0 10px rgba(255, 153, 0, 0.5);"></div>
+                <div class="track-dot" style="width: 12px; height: 12px; background: #ff9900; border-radius: 50%; position: absolute; top: -4px; left: 25%; border: 2px solid #232f3e;"></div>
+            </div>
+        </div>
+
+        <!-- Product Summary Card -->
+        <div class="product-card" style="display: flex; border-top: 1px solid #37475a; padding-top: 25px; align-items: center;">
+            <img src="https://cdn.shopify.com/s/files/1/0249/3913/5054/files/Blue_and_White_Comparison_Chart_Presentation_20_1024x1024.jpg?v=1772444363" class="product-img" style="width: 110px; height: 110px; object-fit: cover; border-radius: 12px; border: 1px solid #333;" alt="TAG Heuer Watch">
+            <div class="product-info" style="padding-left: 25px; flex-grow: 1;">
+                <div style="font-weight: 700; font-size: 18px; color: #ffffff;">TAG Heuer Formula 1</div>
+                <div style="font-size: 13px; color: #848484; margin-top: 4px;">Special Edition Chronograph • 43mm Steel Case</div>
+                <div style="margin-top: 12px; font-weight: 800; color: #ff9900; font-size: 18px;">₹2,88,000.00</div>
+            </div>
+        </div>
+
+        <!-- Financial Summary -->
+        <table class="price-table" style="width: 100%; margin-top: 30px; font-size: 14px; border-top: 1px solid #37475a; padding-top: 20px; color: #cccccc;">
+            <tr><td style="padding: 6px 0;">Item Subtotal:</td><td align="right">₹2,88,000.00</td></tr>
+            <tr><td style="padding: 6px 0;">Shipping & Handling:</td><td align="right" style="color: #2ecc71;">FREE</td></tr>
+            <tr><td style="padding: 6px 0;">Promotion Applied:</td><td align="right" style="color: #ff4444;">-₹5,000.00</td></tr>
+            <tr style="font-size: 20px; font-weight: 800; color: #ffffff;">
+                <td style="padding-top: 20px; border-top: 1px solid #444;">Order Total:</td>
+                <td align="right" style="padding-top: 20px; border-top: 1px solid #444;">₹2,83,000.00</td>
+            </tr>
+        </table>
+
+        <!-- Primary Action Button -->
+        <a href="#" class="cta-button" style="display: block; background: #ff9900; color: #111111 !important; text-align: center; padding: 18px; text-decoration: none; border-radius: 6px; font-weight: 800; margin-top: 40px; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">View or Manage Order</a>
+        
+        <!-- Personalized Closing -->
+        <div style="margin-top: 40px; border-top: 1px solid #333; padding-top: 30px; text-align: center;">
+            <p style="font-style: italic; color: #888; font-size: 14px;">"Luxury is in each detail. Thank you for letting us be a part of your journey."</p>
+            <p style="font-weight: 700; color: #ff9900; margin-top: 10px;">The Signature Team</p>
+        </div>
+    </div>
+
+    <!-- Official Footer -->
+    <div class="footer" style="padding: 30px; background-color: #131921; font-size: 11px; color: #666666; text-align: center; line-height: 1.8;">
+        <p style="margin-bottom: 10px;">This email was sent to you regarding Order <b>#405-9928374-1234567</b>.</p>
+        <p>Questions? Please visit our <a href="#" style="color: #008296; text-decoration: none; font-weight: bold;">Help Center</a> or contact our 24/7 support team.</p>
+        <div style="margin-top: 20px; border-top: 1px solid #222; padding-top: 20px; color: #444;">
+            © 2024 YourBrand Luxury Group, Inc. All rights reserved.
+        </div>
+    </div>
+</div>
+
+<footer>
+© 2026 Transactional Email Marketing | Watch Project
+</footer>
+
+</body>
+</html>

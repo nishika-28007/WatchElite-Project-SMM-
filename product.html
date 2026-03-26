@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxury WatchZone</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f0f0f;
+color:white;
+}
+
+/* HEADER */
+header{
+padding:20px 80px;
+display:flex;
+justify-content:space-between;
+position:fixed;
+width:100%;
+top:0;
+background:rgba(0,0,0,0.6);
+z-index:1000;
+}
+
+header h2{
+background:linear-gradient(45deg,#00eaff,#00ff88);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+nav a{
+margin-left:20px;
+cursor:pointer;
+}
+
+nav a:hover{
+color:#00eaff;
+}
+
+/* HERO */
+.hero{
+margin-top:80px;
+height:40vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:url('https://www.atlantaluxurywatches.com//images/blog/blog-24-09-18.jpg') center/cover;
+ background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.95)),
+}
+
+.hero h1{
+font-size:42px;
+}
+
+.hero p{
+margin-top:10px;
+}
+
+/* FILTER */
+.filter{
+text-align:center;
+margin:30px;
+}
+
+.filter button{
+padding:10px 20px;
+margin:10px;
+border:none;
+border-radius:20px;
+background:linear-gradient(45deg,#00ffcc,#0088ff);
+cursor:pointer;
+}
+
+/* PRODUCTS */
+.products{
+padding:40px;
+}
+
+/* ✅ GRID FIX (5 per row) */
+.grid{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:20px;
+}
+
+/* CARD */
+.card{
+background:rgba(255,255,255,0.06);
+padding:20px;
+border-radius:20px;
+text-align:center;
+transition:0.4s;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+min-height:500px;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 20px #00eaff;
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:12px;
+margin-bottom:10px;
+}
+
+.card h3{
+color:#00eaff;
+margin-bottom:10px;
+}
+
+.card p{
+font-size:14px;
+opacity:0.9;
+margin:3px 0;
+text-align:left;
+}
+
+.price{
+color:#00ff88;
+margin:15px 0;
+font-size:18px;
+font-weight:bold;
+}
+
+/* ✅ NEW BUTTON CONTAINER */
+.btn-group {
+    display: flex;
+    gap: 5px;
+    margin-top: auto;
+}
+
+.card button{
+flex: 1;
+padding:10px;
+border:none;
+border-radius:10px;
+background:#00eaff;
+cursor:pointer;
+font-weight:bold;
+color: black;
+}
+
+.buy-btn {
+    background: #00ff88 !important;
+}
+
+/* ✅ CART FIX */
+.cart{
+position:fixed;
+right:-350px;
+top:0;
+width:350px;
+height:100%;
+background:#111;
+padding:20px;
+transition:0.4s;
+overflow:auto;
+box-shadow:-5px 0 15px rgba(0,0,0,0.5);
+z-index:999;
+}
+
+.cart.active{
+right:0;
+}
+
+.cart h3{
+margin-bottom:15px;
+}
+
+.cart-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #444;
+padding:10px 0;
+font-size:14px;
+}
+
+.cart-item span{
+color:red;
+cursor:pointer;
+font-weight:bold;
+margin-left:10px;
+}
+
+.total{
+margin-top:15px;
+font-size:18px;
+font-weight:bold;
+color:#00ff88;
+}
+
+/* ✅ RESPONSIVE */
+@media(max-width:1200px){
+.grid{
+grid-template-columns:repeat(3,1fr);
+}
+}
+
+@media(max-width:768px){
+.grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+@media(max-width:480px){
+.grid{
+grid-template-columns:1fr;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>Luxury WatchZone</h2>
+</header>
+
+<section class="hero">
+<h1>Elite Watch Collection 2026</h1></br></br>
+<p>Luxury. Precision. Status. Discover Timepieces That Define You.</p>
+</section>
+
+<section class="products">
+<div class="grid" id="products">
+
+<div class="card luxury">
+<img src="https://cdn.shopify.com/s/files/1/0249/3913/5054/files/Blue_and_White_Comparison_Chart_Presentation_15_1024x1024.jpg?v=1772442083">
+<h3>Rolex Submariner</h3>
+<p>✔ Iconic Swiss luxury dive watch</p>
+<p>✔ Water resistance up to 300 meters</p>
+<p>✔ Precision automatic movement</p>
+<p>✔ Scratch-resistant sapphire crystal</p>
+
+<div class="price">₹8,00,000</div>
+<div class="btn-group">
+    <button onclick="addCart('Rolex Submariner',800000)">Add</button>
+    <button class="buy-btn" onclick="buyNow('Rolex Submariner',800000, 'https://cdn.shopify.com/s/files/1/0249/3913/5054/files/Blue_and_White_Comparison_Chart_Presentation_15_1024x1024.jpg?v=1772442083')">Buy</button>
+</div>
+</div>
+
+<div class="card luxury">
+<img src="https://cdn.shopify.com/s/files/1/0249/3913/5054/files/Blue_and_White_Comparison_Chart_Presentation_20_1024x1024.jpg?v=1772444363">
+<h3>Vacheron Constantin</h3>
+
+<p>✔ Elegant racing chronograph design</p>
+<p>✔ Ultra-premium craftsmanship</p>
+<p>✔ Hand-finished luxury detailing</p>
+<p>✔ Limited production exclusivity</p>
+<div class="price">₹12,00,000</div>
+<div class="btn-group">
+    <button onclick="addCart('Rolex Daytona',1200000)">Add</button>
+    <button class="buy-btn" onclick="buyNow('Rolex Daytona',1200000, 'https://cdn.shopify.com/s/files/1/0249/3913/5054/files/Blue_and_White_Comparison_Chart_Presentation_20_1024x1024.jpg?v=1772444363')">Buy</button>
+</div>
+</div>
+
+<div class="card luxury">
+<img src="https://cdn.shopify.com/s/files/1/0249/3913/5054/files/Blue_and_White_Comparison_Chart_Presentation_16_1024x1024.jpg?v=1772442189">
+<h3>Patek Philippe Nautilus</h3>
+
+<p>✔ Iconic stainless steel design</p>
+<p>✔ High resale and collector value</p>
+<p>✔ Slim and elegant profile</p>
+<p>✔ Premium Swiss automatic movement</p>
+<div class="price">₹30,00,000</div>
+<div class="btn-group">
+    <button onclick="addCart('Patek Nautilus',3000000)">Add</button>
+    <button class="buy-btn" onclick="buyNow('Patek Nautilus',3000000, 'https://cdn.shopify.com/s/files/1/0249/3913/5054/files/Blue_and_White_Comparison_Chart_Presentation_16_1024x1024.jpg?v=1772442189')">Buy</button>
+</div>
+</div>
+
+<div class="card luxury">
+<img src="https://cdn.shopify.com/s/files/1/0249/3913/5054/files/Blue_and_White_Comparison_Chart_Presentation_18_1024x1024.jpg?v=1772442315">
+<h3>Audemars Piguet Royal Oak</h3>
+
+<p>✔ Luxury sports watch category leader</p>
+<p>✔ Premium stainless steel finishing</p>
+<p>✔ High-end mechanical movement</p>
+<p>✔ Bold and powerful wrist presence</p>
+<div class="price">₹25,00,000</div>
+<div class="btn-group">
+    <button onclick="addCart('AP Royal Oak',2500000)">Add</button>
+    <button class="buy-btn" onclick="buyNow('AP Royal Oak',2500000, 'https://cdn.shopify.com/s/files/1/0249/3913/5054/files/Blue_and_White_Comparison_Chart_Presentation_18_1024x1024.jpg?v=1772442315')">Buy</button>
+</div>
+</div>
+
+<div class="card sports">
+<img src="https://cdn.shopify.com/s/files/1/0249/3913/5054/files/Blue_and_White_Comparison_Chart_Presentation_19_1024x1024.jpg?v=1772444243">
+<h3>Omega Speedmaster</h3>
+<p>✔ Famous “Moonwatch” worn by astronauts</p>
+<p>✔ NASA certified chronograph</p>
+<p>✔ High precision Swiss movement</p>
+
+<p>✔ Durable and sporty design</p>
+<div class="price">₹5,00,000</div>
+<div class="btn-group">
+    <button onclick="addCart('Omega Speedmaster',500000)">Add</button>
+    <button class="buy-btn" onclick="buyNow('Omega Speedmaster',500000, 'https://cdn.shopify.com/s/files/1/0249/3913/5054/files/Blue_and_White_Comparison_Chart_Presentation_19_1024x1024.jpg?v=1772444243')">Buy</button>
+</div>
+</div>
+
+<div class="card sports">
+<img src="data:image/jpeg;base64,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">
+
+<h3>Tag Heuer </h3>
+<p>✔ Modern integrated bracelet design</p>
+<p>✔ Affordable luxury sports watch</p>
+<p>✔ Swiss quartz/automatic options</p>
+
+<p>✔ Popular among young professionals</p>
+<div class="price">₹60,00,000</div>
+<div class="btn-group">
+    <button onclick="addCart('Tissot PRX',6000000)">Add</button>
+    <button class="buy-btn" onclick="buyNow('Tissot PRX',6000000, 'https://images.jdmagicbox.com/quickquotes/images_main/tissot-men-s-prx-316l-stainless-steel-case-quartz-watch-grey-221808620-r3u07m8m.png')">Buy</button>
+</div>
+</div>
+
+<div class="card luxury">
+<img src="https://cdn.shopify.com/s/files/1/0249/3913/5054/files/Blue_and_White_Comparison_Chart_Presentation_21_1024x1024.jpg?v=1772444441">
+<h3>Cartier Tank</h3>
+<p>✔ Classic rectangular case design</p>
+<p>✔ Timeless elegance and luxury</p>
+<p>✔ Inspired by vintage aesthetics</p>
+<p>✔ Premium leather strap finish</p>
+
+<div class="price">₹4,00,000</div>
+<div class="btn-group">
+    <button onclick="addCart('Cartier Tank',400000)">Add</button>
+    <button class="buy-btn" onclick="buyNow('Cartier Tank',400000, 'https://cdn.shopify.com/s/files/1/0249/3913/5054/files/Blue_and_White_Comparison_Chart_Presentation_21_1024x1024.jpg?v=1772444441')">Buy</button>
+</div>
+</div>
+
+<div class="card luxury">
+<img src="https://img.chrono24.com/images/uhren/26980939-6z4650bsd7vyr7cq5yedlaly-ExtraLarge.jpg">
+<h3>Richard Mille RM 11</h3>
+<p>✔ Ultra high-end luxury timepiece</p>
+<p>✔ Futuristic skeleton dial design</p>
+<p>✔ Lightweight yet extremely durable</p>
+<p>✔ Worn by billionaires & athletes</p>
+
+<div class="price">₹2,50,00,000</div>
+<div class="btn-group">
+    <button onclick="addCart('RM 11',25000000)">Add</button>
+    <button class="buy-btn" onclick="buyNow('RM 11',25000000, 'https://img.chrono24.com/images/uhren/26980939-6z4650bsd7vyr7cq5yedlaly-ExtraLarge.jpg')">Buy</button>
+</div>
+</div>
+
+<div class="card luxury">
+<img src="https://cdn.shopify.com/s/files/1/0249/3913/5054/files/Blue_and_White_Comparison_Chart_Presentation_22_1024x1024.jpg?v=1772444562">
+<h3>Breitling</h3>
+<p>✔ Aviation inspired design</p>
+<p>✔ Precision chronograph features</p>
+<p>✔ Pilot-friendly functionality</p>
+
+<p>✔ Trusted by aviation professionals</p>
+<div class="price">₹6,00,000</div>
+<div class="btn-group">
+    <button onclick="addCart('Navitimer',600000)">Add</button>
+    <button class="buy-btn" onclick="buyNow('Navitimer',600000, 'https://cdn.shopify.com/s/files/1/0249/3913/5054/files/Blue_and_White_Comparison_Chart_Presentation_22_1024x1024.jpg?v=1772444562')">Buy</button>
+</div>
+</div>
+
+<div class="card luxury">
+<img src="https://cdn.shopify.com/s/files/1/0249/3913/5054/files/Blue_and_White_Comparison_Chart_Presentation_23_1024x1024.jpg?v=1772444638">
+<h3>Tudor Black Bay</h3>
+<p>✔ Rolex heritage at accessible price</p>
+<p>✔ Vintage-inspired dive watch</p>
+<p>✔ Strong stainless steel build</p>
+<p>✔ Reliable automatic movement</p>
+
+<div class="price">₹3,00,000</div>
+<div class="btn-group">
+    <button onclick="addCart('Tudor',300000)">Add</button>
+    <button class="buy-btn" onclick="buyNow('Tudor',300000, 'https://cdn.shopify.com/s/files/1/0249/3913/5054/files/Blue_and_White_Comparison_Chart_Presentation_23_1024x1024.jpg?v=1772444638')">Buy</button>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<div class="cart" id="cart">
+<h3>Cart</h3>
+<div id="cartItems"></div>
+<div class="total" id="total">Total: ₹0</div>
+</div>
+
+<script>
+let total=0;
+
+function toggleCart(){
+document.getElementById('cart').classList.toggle('active');
+}
+
+function addCart(name,price){
+let cart=document.getElementById('cartItems');
+let item=document.createElement('div');
+item.classList.add('cart-item');
+item.innerHTML=`${name} - ₹${price} <span style="color:red;cursor:pointer">X</span>`;
+cart.appendChild(item);
+total+=price;
+document.getElementById('total').innerText="Total: ₹"+total;
+item.querySelector('span').onclick=()=>{
+cart.removeChild(item);
+total-=price;
+document.getElementById('total').innerText="Total: ₹"+total;
+}
+toggleCart();
+}
+
+function filter(type){
+document.querySelectorAll('.card').forEach(card=>{
+card.style.display=(type==='all'||card.classList.contains(type))?'block':'none';
+});
+}
+
+function buyNow(name, price, imgUrl) {
+    localStorage.setItem('selectedProductName', name);
+    localStorage.setItem('selectedProductPrice', price);
+    localStorage.setItem('selectedProductImg', imgUrl);
+    window.location.href = 'qr.html';
+}
+</script>
+
+</body>
+</html>
