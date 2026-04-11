@@ -124,6 +124,34 @@ color:#aaa;
 from{opacity:0; transform:translateY(20px);}
 to{opacity:1; transform:translateY(0);}
 }
+  .click-indicator {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 20px;
+  padding: 8px 16px;
+  font-size: 13px;
+  color: #000;
+  font-weight: 600;
+  background: linear-gradient(45deg, #00ffd5, #00bfff);
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(0, 255, 213, 0.3);
+  transition: all 0.3s ease;
+}
+.pulse-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #000;
+  border-radius: 50%;
+  margin-right: 8px;
+  animation: pulse 1.5s infinite;
+}
+.card:hover .click-indicator {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 255, 213, 0.5);
+  background: linear-gradient(45deg, #00bfff, #00ffd5);
+}
+
 </style>
 </head>
 
@@ -176,6 +204,8 @@ These ads are designed in such a way that they blend with normal app content, so
 While scrolling Instagram, you see a “Sponsored” post that looks like a normal reel or post.  
 You click it thinking it's interesting — and it takes you to a product page.
 </p>
+  <span class="click-indicator"><span class="pulse-dot"></span>Learn More →</span>
+
 </div>
 
 <!-- GAME -->
@@ -192,6 +222,8 @@ These ads are often placed between levels or offered as rewards to keep users en
 While playing a game, you get a message: “Watch this ad to earn 100 coins.”  
 You watch the ad, get the reward, and the brand gets visibility.
 </p>
+  <span class="click-indicator"><span class="pulse-dot"></span>Learn More →</span>
+
 </div>
 
 
@@ -208,6 +240,8 @@ Mobile search ads are advertisements that appear on search engines when users se
 <b>Example:</b>  
 You search “best smartphones under 20000” on Google, and the top results are sponsored ads from brands.
 </p>
+  <span class="click-indicator"><span class="pulse-dot"></span>Learn More →</span>
+
 </div>
 
 
